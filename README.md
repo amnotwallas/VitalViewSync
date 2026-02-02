@@ -5,7 +5,7 @@
 
   Una plataforma con numerosas funciones para controlar y comprender tu salud. Este panel de control ofrece visualizaciones detalladas de la actividad diaria, la calidad del sueño y los indicadores clave de salud. Participa en retos personales, gana premios y obtén información valiosa sobre tu bienestar a través de una interfaz limpia y receptiva.
 
-  <img src="" alt="Project Screenshot" />
+  <img src="pics/Dashboard-preview .jpeg" alt="Project Screenshot" />
 
 
 </div>
