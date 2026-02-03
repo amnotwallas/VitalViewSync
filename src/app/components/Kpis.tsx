@@ -1,6 +1,6 @@
 import { Footprints, MapPin, Moon, Activity as ActivityIcon } from "lucide-react";
 import { StatCard } from "@/app/components/StatCard";
-import { formatHours } from "@/utils/formatters";
+import { formatHours, formatDuration } from "@/utils/formatters";
 import { useMetrics } from "@/hooks/useMetrics";
 import { Skeleton } from "./ui/skeleton";
 
@@ -47,8 +47,8 @@ const Kpis: React.FC = () => {
     {
       color: "bg-purple-500",
       title: "Tiempo de Sueño",
-      value: formatHours(metrics?.sleep.totalSleep || 0),
-      unit: "hrs",
+      value: formatDuration(metrics?.sleep.totalSleep || 0),
+      unit: "",
       icon: Moon,
       trend: { value: 8, isUp: false },
     },
