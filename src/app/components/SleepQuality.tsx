@@ -1,13 +1,12 @@
 import { motion } from "motion/react";
 import { SleepBubbles } from "@/app/components/charts/SleepBubbles";
 import { SimpleTip } from "@/app/components/Tip";
-import { formatHours } from "@/utils/formatters";
+import { formatDuration } from "@/utils/formatters";
 
 const SleepQuality: React.FC = () => {
-  const unit = "hrs";
   const savedJson = localStorage.getItem("metrics");
   const parsedMetrics = savedJson ? JSON.parse(savedJson) : null;
-  const value = formatHours(parsedMetrics?.sleep?.total || 0);
+  const value = formatDuration(parsedMetrics?.sleep?.total || 0);
 
   return (
     <motion.div
@@ -27,7 +26,6 @@ const SleepQuality: React.FC = () => {
         <span className="text-sm font-semibold text-slate-600">Total:</span>
         <div className="flex items-baseline gap-1">
           <h3 className="text-3xl font-bold text-slate-900">{value}</h3>
-          {unit && <span className="text-slate-400 text-sm font-medium">{unit}</span>}
         </div>
       </div>
 
