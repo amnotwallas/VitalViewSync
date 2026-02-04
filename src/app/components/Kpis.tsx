@@ -1,6 +1,6 @@
 import { Footprints, MapPin, Moon, Activity as ActivityIcon } from "lucide-react";
 import { StatCard } from "@/app/components/StatCard";
-import { formatHours, formatDuration } from "@/utils/formatters";
+import { formatDuration } from "@/utils/formatters";
 import { useMetrics } from "@/hooks/useMetrics";
 import { Skeleton } from "./ui/skeleton";
 
