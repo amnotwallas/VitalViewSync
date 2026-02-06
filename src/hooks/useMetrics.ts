@@ -1,24 +1,12 @@
 import { useState, useEffect } from "react";
 import { Metrics } from "@/models/Metrics";
 import { IS_MOCK, apiUrl } from "@/config/config";
+import { MOCK_METRICS } from "@/mocks/mocks"
 
-const MOCK_DB: Metrics = {
-  steps: 6400,
-  distance: 5.2,
-  sleep: {
-    totalSleep: 450,
-    deepSleep: 120,
-    lightSleep: 270,
-    remSleep: 60,
-  },
-  heartRate: 68,
-  stressLevel: 3,
-  calories: 2200,
-};
 
 export const useMetrics = () => {
   const [metrics, setMetrics] = useState<Metrics | null>(
-    IS_MOCK ? MOCK_DB : null,
+    IS_MOCK ? MOCK_METRICS : null,
   );
   const [loading, setLoading] = useState(!IS_MOCK);
 
