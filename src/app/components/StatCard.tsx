@@ -39,7 +39,7 @@ export const StatCard: React.FC<StatCardProps> = ({
           >
             <div className="flex justify-between items-start mb-4">
               <div className={`p-3 rounded-xl ${color} bg-opacity-10`}>
-                <Icon className={`w-6 h-6 ${color.replace('bg-', 'text-')}`} />
+                <Icon className={`w-6 h-6 ${color}`} />
               </div>
               {trend && (
                 <div className={`flex items-center text-sm font-semibold ${trend.isUp ? 'text-emerald-600' : 'text-rose-600'}`}>
