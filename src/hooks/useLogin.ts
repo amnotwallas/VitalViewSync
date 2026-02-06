@@ -3,16 +3,8 @@ import { useState } from "react";
 import { LoginCredentials } from "@/models/Login";
 import { IS_MOCK } from "@/config/config";
 import { User } from "@/models/User";
+import { MOCK_USER } from "@/mocks/mocks"
 
-const MOCK_USER: User = {
-  id: 1,
-  name: "Walter",
-  fullname: "Walter Ambriz",
-  status: "Pro",
-  level: 42,
-  avatar:
-    "https://media.licdn.com/dms/image/v2/D4E03AQETpxwVvZtA3g/profile-displayphoto-shrink_800_800/B4EZb7WUNWGUAc-/0/1747973654608?e=1771459200&v=beta&t=krLRVnm45gX6aeByuPyt6eHFEQkdwPdxX5a0fFUR9FM",
-};
 
 export const useLogin = () => {
   const [error, setError] = useState("");
