@@ -1,17 +1,12 @@
 import { useState, useEffect } from "react";
 import { Challenge } from "@/models/Challenge";
 import { IS_MOCK, apiUrl } from "@/config/config";
+import { MOCK_CHALLENGE } from "@/mocks/mocks"
 
-const MOCK_DB: Challenge = {
-    id: 1,
-    type: "steps",
-    title: "Próximo Reto: Maratón 10K",
-    goal: 10000,
-};
 
 export const useChallenges = () => {
   const [challenges, setChallenges] = useState<Challenge | null>(
-    IS_MOCK ? MOCK_DB : null,
+    IS_MOCK ? MOCK_CHALLENGE : null,
   );
   const [loading, setLoading] = useState(!IS_MOCK);
 

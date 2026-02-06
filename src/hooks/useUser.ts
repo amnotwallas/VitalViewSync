@@ -1,16 +1,8 @@
 import { useState, useEffect } from "react";
 import { User } from "@/models/User";
 import { IS_MOCK, apiUrl } from "@/config/config";
+import { MOCK_USER } from "@/mocks/mocks"
 
-const MOCK_DB: User = {
-  id: 1,
-  name: "Walter",
-  fullname: "Walter Ambriz",
-  status: "Pro",
-  level: 42,
-  avatar:
-    "https://media.licdn.com/dms/image/v2/D4E03AQETpxwVvZtA3g/profile-displayphoto-shrink_800_800/B4EZb7WUNWGUAc-/0/1747973654608?e=1771459200&v=beta&t=krLRVnm45gX6aeByuPyt6eHFEQkdwPdxX5a0fFUR9FM",
-};
 
 const getInitialUser = (): User | null => {
   try {
@@ -19,7 +11,7 @@ const getInitialUser = (): User | null => {
       return JSON.parse(storedUser);
     }
     if (IS_MOCK) {
-      return MOCK_DB;
+      return MOCK_USER;
     }
     return null;
   } catch (error) {
