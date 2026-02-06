@@ -33,7 +33,7 @@ const Kpis: React.FC = () => {
       value: metrics?.steps || 0,
       unit: "pasos",
       icon: Footprints,
-      // TODO: Replace with dynamic trend data from API
+      colorIcon: "text-indigo-500",
       trend: { value: 12, isUp: true },
     },
     {
@@ -42,6 +42,7 @@ const Kpis: React.FC = () => {
       value: metrics?.distance || 0,
       unit: "km",
       icon: MapPin,
+      colorIcon: "text-sky-500",
       trend: { value: 5, isUp: true },
     },
     {
@@ -50,6 +51,7 @@ const Kpis: React.FC = () => {
       value: formatDuration(metrics?.sleep.totalSleep || 0),
       unit: "",
       icon: Moon,
+      colorIcon: "text-purple-500",
       trend: { value: 8, isUp: false },
     },
     {
@@ -58,6 +60,7 @@ const Kpis: React.FC = () => {
       value: metrics?.heartRate || 0,
       unit: "bpm",
       icon: ActivityIcon,
+      colorIcon: "text-black-500",
       trend: { value: 2, isUp: true },
     },
   ];
