@@ -2,11 +2,15 @@ import { motion } from "motion/react";
 import { SleepBubbles } from "@/app/components/charts/SleepBubbles";
 import { SimpleTip } from "@/app/components/Tip";
 import { formatDuration } from "@/utils/formatters";
+import { Metrics } from "@/models/Metrics";
 
-const SleepQuality: React.FC = () => {
-  const savedJson = localStorage.getItem("metrics");
-  const parsedMetrics = savedJson ? JSON.parse(savedJson) : null;
-  const value = formatDuration(parsedMetrics?.sleep?.total || 0);
+interface SleepQualityProps {
+  metrics: Metrics | null;
+  loading: boolean;
+}
+
+const SleepQuality: React.FC<SleepQualityProps> = ({ metrics, loading }) => {
+  const value = formatDuration(metrics?.sleep?.totalSleep || 0);
 
   return (
     <motion.div
@@ -29,7 +33,7 @@ const SleepQuality: React.FC = () => {
         </div>
       </div>
 
-      <SleepBubbles />
+      <SleepBubbles metrics={metrics} loading={loading} />
       <SimpleTip tip={"Duerme 30 min más hoy"} />
     </motion.div>
   );

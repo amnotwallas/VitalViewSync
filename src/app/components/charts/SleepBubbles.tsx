@@ -1,6 +1,7 @@
 import { calculatePercentage } from "@/utils/formatters";
 import { formatDuration } from "@/utils/formatters";
 import { motion } from "framer-motion";
+import { Metrics } from "@/models/Metrics";
 
 function radiusFromValue(v: number, vMin: number, vMax: number) {
   const rMin = 30;
@@ -17,14 +18,18 @@ type Bubble = {
   subtext?: string;
 };
 
-const savedJson = localStorage.getItem("metrics");
-const parsedMetrics = savedJson ? JSON.parse(savedJson) : null;
-const sleepData = {
-  totalSleep: parsedMetrics?.sleep?.total || 0,
-  deepSleep: parsedMetrics?.sleep?.deep || 0,
-  lightSleep: parsedMetrics?.sleep?.light || 0,
-  remSleep: parsedMetrics?.sleep?.rem || 0,
-};
+interface SleepBubblesProps {
+  metrics: Metrics | null;
+  loading: boolean;
+}
+
+export const SleepBubbles: React.FC<SleepBubblesProps> = ({ metrics, loading }) => {
+  const sleepData = {
+    totalSleep: metrics?.sleep?.totalSleep || 0,
+    deepSleep: metrics?.sleep?.deepSleep || 0,
+    lightSleep: metrics?.sleep?.lightSleep || 0,
+    remSleep: metrics?.sleep?.remSleep || 0,
+  };
 
   const data: Bubble[] = [
     {
@@ -48,8 +53,6 @@ const sleepData = {
       subtext: formatDuration(sleepData.remSleep),
     },
   ];
-
-export const SleepBubbles: React.FC = () => {
 
 
   const vals = data.map((d) => d.value);
