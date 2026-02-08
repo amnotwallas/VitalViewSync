@@ -1,16 +1,20 @@
 import { Footprints } from "lucide-react";
 import { motion } from "motion/react";
 import { useChallenges } from "@/hooks/useChallenges";
+import { Metrics } from "@/models/Metrics";
 
-const ChallengesCard: React.FC = () => {
-  const savedJson = localStorage.getItem("metrics");
-  const parsedMetrics = savedJson ? JSON.parse(savedJson) : null;
-  const steps = parsedMetrics?.steps || "0";
+interface ChallengesCardProps {
+  metrics: Metrics | null;
+  loading: boolean;
+}
+
+const ChallengesCard: React.FC<ChallengesCardProps> = ({ metrics, loading }) => {
+  const steps = metrics?.steps || "0";
 
   const { challenges } = useChallenges();
   const goal = challenges?.goal || 0;
   const lineProgress =
-    goal > 0 ? Math.min(100, Math.floor((parseInt(steps) / goal) * 100)) : 0;
+    goal > 0 ? Math.min(100, Math.floor((parseInt(steps.toString()) / goal) * 100)) : 0;
 
   return (
     <motion.div

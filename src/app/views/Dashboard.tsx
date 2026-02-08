@@ -5,36 +5,41 @@ import { Tip } from "@/app/components/Tip";
 import Activity from "@/app/components/Activity";
 import SleepQuality from "@/app/components/SleepQuality";
 import Awards from "@/app/components/Awards";
+import { useMetrics } from "@/hooks/useMetrics";
 
 
-export const DashboardView: React.FC = () => (
-  <div className="p-8">
-    <Welcome />
+export const DashboardView: React.FC = () => {
+  const { metrics, loading } = useMetrics();
 
-    {/* Metrics Grid */}
-    
-    <Kpis />
+  return (
+    <div className="p-8">
+      <Welcome />
 
-    <div className="lg:items-start mt-8 grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
-      <ChallengesCard />
+      {/* Metrics Grid */}
       
-      <Tip tip={"Intenta dormir 30 minutos más hoy..."} />
-    </div>
+      <Kpis />
 
-    {/* Charts Section */}
-    <div className=" lg:items-start grid grid-cols-1 lg:grid-cols-3 gap-8">
+      <div className="lg:items-start mt-8 grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+        <ChallengesCard metrics={metrics} loading={loading} />
+        
+        <Tip tip={"Intenta dormir 30 minutos más hoy..."} />
+      </div>
+
+      {/* Charts Section */}
+      <div className=" lg:items-start grid grid-cols-1 lg:grid-cols-3 gap-8">
+        
+        <Activity />
+
+        <SleepQuality metrics={metrics} loading={loading} />
+      </div>
+
+      {/* Bottom section */}
+      <div className="mt-8 grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <Awards />
+      </div>
       
-      <Activity />
-
-      <SleepQuality />
     </div>
-
-    {/* Bottom section */}
-    <div className="mt-8 grid grid-cols-1 lg:grid-cols-2 gap-8">
-      <Awards />
-    </div>
-    
-  </div>
-);
+  );
+};
 
 export default DashboardView;
